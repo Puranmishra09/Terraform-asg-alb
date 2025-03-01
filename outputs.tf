@@ -19,10 +19,9 @@ output "target_group_arn" {
 }
 
 output "ec2_instance_ids" {
-  description = "IDs of the EC2 instances in the Auto Scaling Group"
-  value       = aws_autoscaling_group.web_asg.instances[*].id
+  description = "List of EC2 instance IDs in the ASG"
+  value       = aws_autoscaling_group.web_asg.id
 }
-
 output "vpc_id" {
   description = "VPC ID where resources are deployed"
   value       = var.vpc_id
