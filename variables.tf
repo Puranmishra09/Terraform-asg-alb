@@ -32,6 +32,20 @@ variable "alb_name" {
   description = "Name of the ALB"
   type        = string
 }
+variable "alb_target_group_name" {
+  description = "Name of the ALB target group"
+  type        = string
+}
+
+variable "alb_target_port" {
+  description = "Port on which the ALB target group listens"
+  type        = number
+}
+
+variable "alb_target_protocol" {
+  description = "Protocol for the ALB target group"
+  type        = string
+}
 
 variable "scale_up_threshold" {
   description = "CPU utilization percentage for scale-up"
