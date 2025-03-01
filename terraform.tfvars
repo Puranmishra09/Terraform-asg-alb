@@ -6,9 +6,9 @@ subnet_ids = ["subnet-0275f9c5a53135342", "subnet-01e5f67029f3e389a"]  # At leas
 instance_type = "t2.micro"
 
 # Auto Scaling Group
-min_size         = 2
-max_size         = 3
-desired_capacity = 2
+asg_desired_capacity = 2
+asg_min_size         = 2
+asg_max_size         = 5
 
 # Load Balancer
 alb_name = "my-application-lb"
