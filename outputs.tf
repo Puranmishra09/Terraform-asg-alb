@@ -17,11 +17,11 @@ output "target_group_arn" {
   description = "The ARN of the ALB target group"
   value       = aws_lb_target_group.web_tg.arn
 }
-
-output "ec2_instance_ids" {
+output "ec2_instance_ids" { 
   description = "List of EC2 instance IDs in the ASG"
-  value       = aws_autoscaling_group.web_asg.id
+  value       = aws_autoscaling_group.web_asg.instances[*].id
 }
+
 output "vpc_id" {
   description = "VPC ID where resources are deployed"
   value       = var.vpc_id
