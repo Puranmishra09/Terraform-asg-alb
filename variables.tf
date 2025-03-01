@@ -1,11 +1,5 @@
-variable "region" {
-  description = "AWS region"
-  type        = string
-  default     = "us-east-1"
-}
-
 variable "vpc_id" {
-  description = "VPC ID where resources will be deployed"
+  description = "VPC ID"
   type        = string
 }
 
@@ -17,59 +11,44 @@ variable "subnet_ids" {
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
-  default     = "t3.micro"
 }
 
-variable "asg_min_size" {
+variable "min_size" {
   description = "Minimum number of instances in ASG"
   type        = number
-  default     = 2
 }
 
-variable "asg_max_size" {
+variable "max_size" {
   description = "Maximum number of instances in ASG"
   type        = number
-  default     = 5
 }
 
-variable "asg_desired_capacity" {
+variable "desired_capacity" {
   description = "Desired number of instances in ASG"
   type        = number
-  default     = 2
 }
 
 variable "alb_name" {
-  description = "Name of the Application Load Balancer"
+  description = "Name of the ALB"
   type        = string
-  default     = "web-alb"
-}
-
-variable "alb_target_group_name" {
-  description = "Name of the Target Group"
-  type        = string
-  default     = "web-tg"
-}
-
-variable "alb_target_port" {
-  description = "Port for the Target Group"
-  type        = number
-  default     = 80
-}
-
-variable "alb_target_protocol" {
-  description = "Protocol for the Target Group"
-  type        = string
-  default     = "HTTP"
 }
 
 variable "scale_up_threshold" {
-  description = "CPU utilization threshold for scaling up"
+  description = "CPU utilization percentage for scale-up"
   type        = number
-  default     = 80
 }
 
 variable "scale_down_threshold" {
-  description = "CPU utilization threshold for scaling down"
+  description = "CPU utilization percentage for scale-down"
   type        = number
-  default     = 40
+}
+
+variable "evaluation_periods" {
+  description = "Number of evaluation periods for CloudWatch alarms"
+  type        = number
+}
+
+variable "metric_period" {
+  description = "Time period in seconds for CloudWatch metric"
+  type        = number
 }
