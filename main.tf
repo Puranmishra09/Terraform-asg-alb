@@ -34,12 +34,10 @@ resource "aws_lb_listener" "web_listener" {
   }
 }
 resource "aws_launch_template" "web_lt" {
-  name_prefix   = "web-template-"
+  name_prefix   = "web-lt-"
   image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-  security_group_names = [aws_security_group.asg_sg.id]
 }
-
 resource "aws_autoscaling_group" "web_asg" {
   desired_capacity     = var.asg_desired_capacity
   min_size             = var.asg_min_size
