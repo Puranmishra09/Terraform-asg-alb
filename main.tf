@@ -38,18 +38,29 @@ resource "aws_launch_template" "web_lt" {
   image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 }
-resource "aws_autoscaling_group" "web_asg" {
-  desired_capacity     = var.asg_desired_capacity
-  min_size             = var.asg_min_size
-  max_size             = var.asg_max_size
-  vpc_zone_identifier  = var.subnet_ids
-  target_group_arns    = [aws_lb_target_group.web_tg.arn]
+resource "aws_autoscaling_group" "web_asg" { 
+  name                  = var.asg_name
+  desired_capacity      = var.asg_desired_capacity
+  min_size              = var.asg_min_size
+  max_size              = var.asg_max_size
+  vpc_zone_identifier   = var.subnet_ids
+  target_group_arns     = [aws_lb_target_group.web_tg.arn]
+  health_check_type     = "EC2"
+  health_check_grace_period = 300
+  force_delete          = true
 
   launch_template {
     id      = aws_launch_template.web_lt.id
     version = "$Latest"
   }
+
+  tag {
+    key                 = "Name"
+    value               = var.asg_name
+    propagate_at_launch = true
+  }
 }
+
 resource "aws_autoscaling_policy" "scale_up" {
   name                   = "scale-up"
   scaling_adjustment     = 1
