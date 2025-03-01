@@ -34,7 +34,7 @@ resource "aws_lb_listener" "web_listener" {
   }
 }
 resource "aws_launch_template" "web_lt" {
-  name_prefix   = "web-lt-"
+  name          = "web-launch-template"
   image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 }
