@@ -13,21 +13,20 @@ variable "instance_type" {
   type        = string
 }
 
-variable "min_size" {
-  description = "Minimum number of instances in ASG"
+variable "asg_desired_capacity" {
+  description = "The desired number of EC2 instances in the ASG"
   type        = number
 }
 
-variable "max_size" {
-  description = "Maximum number of instances in ASG"
+variable "asg_min_size" {
+  description = "The minimum number of instances in the ASG"
   type        = number
 }
 
-variable "desired_capacity" {
-  description = "Desired number of instances in ASG"
+variable "asg_max_size" {
+  description = "The maximum number of instances in the ASG"
   type        = number
 }
-
 variable "alb_name" {
   description = "Name of the ALB"
   type        = string
