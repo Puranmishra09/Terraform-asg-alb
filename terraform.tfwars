@@ -1,0 +1,22 @@
+# VPC and Subnet Configuration
+vpc_id     = "vpc-xxxxxxxx"
+subnet_ids = ["subnet-xxxxxxx1", "subnet-xxxxxxx2"]  # At least 2 for high availability
+
+# EC2 Configuration
+instance_type = "t3.micro"
+
+# Auto Scaling Group
+min_size         = 2
+max_size         = 5
+desired_capacity = 2
+
+# Load Balancer
+alb_name = "my-application-lb"
+
+# Scaling Policies
+scale_up_threshold   = 80
+scale_down_threshold = 40
+
+# CloudWatch Alarm Period (in seconds)
+evaluation_periods = 2
+metric_period      = 60
