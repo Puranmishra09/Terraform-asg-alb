@@ -49,11 +49,6 @@ variable "alb_target_protocol" {
 variable "asg_name" {
   default = "my-auto-scaling-group"
 }
-
-resource "aws_autoscaling_group" "web_asg" {
-  name = var.asg_name
-}
-
 variable "scale_up_threshold" {
   description = "CPU utilization percentage for scale-up"
   type        = number
