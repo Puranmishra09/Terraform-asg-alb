@@ -18,6 +18,11 @@ variable "instance_type" {
   type        = string
 }
 
+variable "ssh_key_name" {
+  description = "The name of the SSH key pair to use for EC2 instances"
+  type        = string
+}
+
 variable "asg_desired_capacity" {
   description = "The desired number of EC2 instances in the ASG"
   type        = number
