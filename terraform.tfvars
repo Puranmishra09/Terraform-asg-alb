@@ -1,4 +1,5 @@
-# VPC and Subnet Configuration
+# Region, VPC and Subnet Configuration
+aws_region = "us-east-1"
 vpc_id     = "vpc-0e1eef52b7b47b7b6"
 subnet_ids = ["subnet-0275f9c5a53135342", "subnet-01e5f67029f3e389a"]  # At least 2 for high availability
 
