@@ -41,6 +41,7 @@ resource "aws_launch_template" "web_lt" {
   name          = "web-launch-template"
   image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
+  key_name      = var.ssh_key_name
 }
 resource "aws_autoscaling_group" "web_asg" { 
   name                  = var.asg_name
