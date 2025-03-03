@@ -5,6 +5,8 @@ subnet_ids = ["subnet-xxxxxxxxxxxxx", "subnet-xxxxxxxxxxxxxx"]  # At least 2 for
 
 # EC2 Configuration
 instance_type = "t3.micro"
+ssh_key_name = "key-pair-name"
+
 
 # Load Balancer
 alb_name = "my-application-lb"
