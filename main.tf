@@ -1,6 +1,10 @@
+## Provider Information##
+
 provider "aws" {
   region = var.aws_region
 }
+
+## AMI Auto Populate##
 
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -11,6 +15,9 @@ data "aws_ami" "ubuntu" {
     values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
   }
 }
+
+## Application Load Balancer##
+
 resource "aws_lb" "web_alb" {
   name               = var.alb_name
   internal           = false
@@ -37,6 +44,8 @@ resource "aws_lb_listener" "web_listener" {
     target_group_arn = aws_lb_target_group.web_tg.arn
   }
 }
+## AWS Auto Scaling Group##
+
 resource "aws_launch_template" "web_lt" {
   name          = "web-launch-template"
   image_id      = data.aws_ami.ubuntu.id
@@ -65,6 +74,7 @@ resource "aws_autoscaling_group" "web_asg" {
     propagate_at_launch = true
   }
 }
+## Autoscaling Policy: SimpleScaling##
 
 resource "aws_autoscaling_policy" "scale_up" {
   name                   = "scale-up"
@@ -83,6 +93,7 @@ resource "aws_autoscaling_policy" "scale_down" {
   autoscaling_group_name = aws_autoscaling_group.web_asg.name
   policy_type            = "SimpleScaling"
 }
+## Cloud Watch CPU Monitoring##
 
 resource "aws_cloudwatch_metric_alarm" "high_cpu" {
   alarm_name          = "high-cpu-utilization"
