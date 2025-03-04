@@ -15,15 +15,9 @@ alb_target_port       = 80
 alb_target_protocol   = "HTTP"
 
 # Auto Scaling Group
-asg_desired_capacity = 2
-asg_min_size         = 2
-asg_max_size         = 3
 asg_name = "production-asg"
 
 # Scaling Policies
 scale_up_threshold   = 80
 scale_down_threshold = 40
 
-# CloudWatch Alarm Period (in seconds)
-evaluation_periods = 2
-metric_period      = 60
