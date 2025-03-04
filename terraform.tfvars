@@ -14,7 +14,4 @@ alb_target_group_name = "web-target-group"
 # Auto Scaling Group
 asg_name = "production-asg"
 
-# Scaling Policies
-scale_up_threshold   = 80
-scale_down_threshold = 40
 
