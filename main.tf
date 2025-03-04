@@ -21,8 +21,8 @@ resource "aws_lb" "web_alb" {
 
 resource "aws_lb_target_group" "web_tg" {
   name     = var.alb_target_group_name
-  port     = var.alb_target_port
-  protocol = var.alb_target_protocol
+  port     =  80
+  protocol =  "HTTP"
   vpc_id   = var.vpc_id
   target_type = "instance"
 }
@@ -45,9 +45,9 @@ resource "aws_launch_template" "web_lt" {
 }
 resource "aws_autoscaling_group" "web_asg" { 
   name                  = var.asg_name
-  desired_capacity      = var.asg_desired_capacity
-  min_size              = var.asg_min_size
-  max_size              = var.asg_max_size
+  desired_capacity      = 2
+  min_size              = 2
+  max_size              = 3
   vpc_zone_identifier   = var.subnet_ids
   target_group_arns     = [aws_lb_target_group.web_tg.arn]
   health_check_type     = "EC2"
